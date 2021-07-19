@@ -229,3 +229,14 @@ Teorias:
 - Funções criadas dentro de outras funções só tem escopo de bloco;
 
 ### Arrays
+
+- Existem 2 tipos de criação de array, a sintaxe Formal e a literal (mais usada);
+- Formal: const arr = new Array();
+  // Use (valor) para iniciar com valor, ou sem para iniciá-la com valor nenhum. Use também para limpar o array de um jeito mais formal e elegante (ex: const a = [0, 1, 2]; a = new Array)
+- Existem vários jeitos de colcoar valores, são alguns deles:
+- arr[3] = 'teste'; arr.push('teste 2');
+- Literal: const teste = [];
+
+### Objetos
+
+- Também há um jeito formal: const pessoa = new Object();
