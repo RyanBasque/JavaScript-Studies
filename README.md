@@ -240,3 +240,4 @@ Teorias:
 ### Objetos
 
 - Também há um jeito formal: const pessoa = new Object();
+- Opa
