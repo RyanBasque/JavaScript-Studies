@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laços de repetição</title>
+</head>
+<body>     
+    <script>
+        let number = prompt('Digite um número para ver sua tabuada!');
+        let indice = 0;
+
+        while(indice < 10) {
+            ++indice;
+
+            document.write(`${number} x ${indice} = ${number * indice} (usando o while) <br/>`);
+
+            indice !== 10 || document.write(' <br/> ');
+            indice !== 10 || indice++;
+        };
+
+        do {
+            
+        } while(indice < 10) {
+
+        };
+
+        for(let i = 1; i <= 10; ++i) {
+            document.write(`${number} x ${i} = ${number * i} (usando o for) <br/>`);
+        };
+
+    </script>
+</body>
+</html>
