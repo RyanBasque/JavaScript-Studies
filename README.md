@@ -240,3 +240,20 @@ Teorias:
 ### Objetos
 
 - Também há um jeito formal: const pessoa = new Object();
+- Jeito literal: const pessoa = {};
+- Você pode iterar objetos usando for in;
+- Use .chave ou ['chave'] para buscar um valor ex: const pessoas = { nome: `Ryan` };
+- console.log(pessoas.nome);
+
+### Métodos
+
+- São funções atreladas a objetos;
+- const teste = { funcao: function (n) {...} };
+- teste.funcao(n);
+- Toda função dentro de um objeto é um `MÉTODO`, como por exemplo: método alert do obketo window (window.alert("Algo"));
+
+### This
+
+- O This em arrow functions é mudado, dependendo do contexto, não retorna nada.
+- O This pode representar muitas coisas. Dependendo do contexo, como o de uma arrow function, ele referencia outra coisa na web, por exemplo, representa `o objeto window que contem os métodos alert, prompt, locate, etc`;
+- Voltarei nesse módulo depois;
