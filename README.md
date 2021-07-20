@@ -7,7 +7,7 @@
 
 ### Babel
 
-- Apesar do JavaScript ser uma linguagem não interpretada, nas novas updates (ES5+) se tornou necessário o uso de um compilador (para que todoso os sites na web não quebrem com uma mudança direta na fonte do JavaScript), que no caso, é o BabelJs.
+- Apesar do JavaScript ser uma linguagem não `interpretada`, nas novas updates (ES5+) se tornou necessário o uso de um compilador (para que todos os sites na web não quebrem com uma mudança direta na fonte do JavaScript), que no caso, é o BabelJs.
 - O Babel transforma let em var, arrow functions em functions, etc. Vejas as compatibilidades aqui https://github.com/kangax/compat-table;
 
 ### Ferramentas necessárias
@@ -19,7 +19,7 @@
 
 ### Testes de JavaScript
 
-Existem várias formas de testar um arquivo JavaScript, citarei duas:
+Existem várias formas de testar um arquivo JavaScript, citarei quatro:
 
 - No console Node usando o comando: node caminho-do-arquivo (use tab para ver quais arquivos hão);
 - Usando o comando node no terminal e logo em seguida colocando o código para testar (control + c para sair);
@@ -36,6 +36,7 @@ Teorias:
 
 - Alguns códigos só funcionam no browser (na DOM), como por exemplo, o alert(`Olá, mundo! 👋`). Esse código não funciona no terminal node por razões óbvias (o terminal não pode exibir uma alerta). A mensagem de erro é: Uncaught ReferenceError: alert is not defined;
 - DOM: Document Object Model;
+- Uma vez que você cria um let arry = []; e um let \_arry = [], os dois não tem o mesmo valor, então arry === \_arry retorna false. Isso porque ele compara o espaço alocado na memória para cada array
 
 ### Variáveis
 
@@ -257,3 +258,29 @@ Teorias:
 - O This em arrow functions é mudado, dependendo do contexto, não retorna nada.
 - O This pode representar muitas coisas. Dependendo do contexo, como o de uma arrow function, ele referencia outra coisa na web, por exemplo, representa `o objeto window que contem os métodos alert, prompt, locate, etc`;
 - Voltarei nesse módulo depois;
+
+### Wrapper
+
+- Com excessão de null e undefined, todos os tipos primitivos podem ser envolvidos usando o Wrapper, que basicamente é: (antes) const str = "teste" (agora) const new String("teste");
+- Isso é pouco usado e faz com que o tipo deixe de ser string para ser um objeto de string fazendo com que a string agora tenha métodos por ser um objeto;
+
+### Valor vs referência
+
+...
+let arry = [];
+let \_arry = [];
+
+arry === \_arry || console.log(false);
+// Isso porque ele compara o espaço de memória do computador alocado a esse array
+// Mas se eu disser que arry = \_arry, eu estou dizendo que eles compartilham o mesmo espaço de memória, e consecutivamente os mesmo valores;
+
+arry = \_arry;
+
+arry[0] = "teste";
+
+console.log(arry, \_arry); // ["teste"] ["teste"]
+...
+
+- Ver mais em './revisão-de-lógica/valor-vs-referencia.js'
+
+### Loop for vs Loop while
