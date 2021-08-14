@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamento de erros</title>
+</head>
+<body>
+    <script src="./tratamento-de-erros.js"></script>
+    <script>
+        // console.log(soma(1, 2));
+        // alert(soma(8, 10));
+        // document.write(soma(18, '29'));
+
+        try {
+            // Tenta executar essa conta
+            let somaTotal = soma('3', 2);
+        } catch (error) {
+            // caso dê errado, o bloco catch pega o erro
+            // a mensagem de erro vem personalizada por conta do throw Error('Erro de soma, você passou um tipo que não é number');
+            // retorna "Erro de soma, você passou um tipo que não é number".
+            // exite uma propriedade dentro do objeto erro que é a mensagem exata do erro
+            console.error(error.message);
+        } finally {
+            // executa independente do resultado, dando erro ou não
+            console.log('Deu erro, mas essa função foi executada de qualquer jeito')
+        };
+
+    </script>
+</body>
+</html>

@@ -26,13 +26,13 @@ Existem várias formas de testar um arquivo JavaScript, citarei quatro:
 - Usando o console (F12) do browser;
 - No browser em uma página HTML dentro da tag <script></script>, sendo uma tag normal ou uma orfã com caminho especificado para o arquuvo JavaScript <script src="./variaveis.js">.
 
-Algumas dicas e coisas a se fazer:
+### Algumas dicas e coisas a se fazer:
 
 - Não colocar o script dentro do head (motivo: performance);
 - Colocar o script orfão dentro do body, mas no fim (motivo: performance);
 - Code plugin: Code Runner, deixa disponível um botão de "run" no canto superior direito, executando um arquivo (simulação do node caminho-do-arquivo, mas no arquivo que você está visualizando).
 
-Teorias:
+### Teorias:
 
 - Alguns códigos só funcionam no browser (na DOM), como por exemplo, o alert(`Olá, mundo! 👋`). Esse código não funciona no terminal node por razões óbvias (o terminal não pode exibir uma alerta). A mensagem de erro é: Uncaught ReferenceError: alert is not defined;
 - DOM: Document Object Model;
@@ -283,4 +283,50 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 
 - Ver mais em './revisão-de-lógica/valor-vs-referencia.js'
 
-### Loop for vs Loop while
+### indexOf e lastIndexOf
+
+- IndexOf(1) retona a primeira posição do elemento dentro do array (retorna -1 se não existir);
+- LastIndexOf(5) retona a última posição do elemento dentro do array (retorna -1 se não existir);
+
+### Tratamento de erros (bloco try catch finnaly)
+
+- Existem alguns meios de tratar erros e evitar que eles aconteçam, o mais popular é a função throw Error('mensagem';
+- Essa função faz com que, se houver um erro (como de tipagem, por exemplo, visualizar melhor em './revisão-de-lógica/tratamento-de-erros.js'), retorna um console.log com a mensagem de erro.
+- Usando o bloco try {} catch (error) {}, podemos dizer ao JavaScript: "ei, tente executar esse código", e se ele não conseguir, passa a executar as funções do bloco catch (ver melhor em './revisão-de-lógica/tratamento-de-erros.html');
+- Excessão: o JavaScript ignora absolutamente todo, `todo` código abaixo se houver erros, mas se você usar um bloco try catch, ele continua a execução (ignora tudo que vem abaixo desse bloco);
+- O bloco finnaly é executado se houver ou não um erro;
+
+## Sistema léxico do JavaScript
+
+- O que é uma instrução? Qualquer bloco de código que o JS interpreta (ex: 10 + 20);
+- Existem comentários de uma única linha (//) e os de múltiplas linhas (/_ e _/);
+- O JavaScript é case sensitive, ou seja diferencia letras maiúsculas de minúsculas;
+- Existem palavras reservadas do JavaScript, ou seja, palavras que não podem ser usadas para dar nomes, como var, let, for, etc;
+- Veja mais da spalavras reservadas em (Palavras reservadas)[https://www.google.com/search?q=palavras+reservadas+javascript&oq=palavras+reserva&aqs=chrome.4.0l3j69i57j0l6.4154j0j7&sourceid=chrome&ie=UTF-8];
+- O ponto e vírgula é opcional no JavaScript, tudo depende do time em que você está trabalhando;
+- Mas o ponto e vírgule obrigatório se você colocar 2 códigos na mesma linha (ex: let a = "oi"; teste())
+
+### Use Strict
+
+- Deixa o código mais seguro, diminuindo as chances de dar problema;
+- Muda muita coisa no JavaScript
+- Coloque "use strict" na primeira linha do código, atenção, `primeira linha` ou antes da primeira declaração;
+- Uma das coisas que ele faz é evitar o criação de variáveis sem usar let, const ou var;
+- (Site da mozzila) [https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Strict_mode];
+
+## Funções
+
+- Em Javascript, funções são objetos com a incrível capacidade de serem invocados;
+- Podem ser literais, isto é, sem usar o operador new para criar a função;
+- Até o ES5, funções eram o único jeito de gerar escopo de variáveis;
+- Podem ser IIFE (Immediately Invoked Function Expression), isto é, podem ser invocadas imediatamente;
+- IIFE não é necessário se você está usando bundle, node ou esModule;
+- Ver mais sobre `IIFE` em './funcoes/IIFE.html';
+- Podem ter propriedades internas como arguments e names;
+- Nomes podem ser opcionais, ou seja, as funções podem ser anônimas
+
+### Hoisting
+
+- Hoisting é a capacidade do interpretador do JavaScript de içar funções e var's para o começo do código;
+- Isso permite com que você possa criar uma `function` teste () na linha 10 e o chame da linha 1 sem dar problemas;
+- Isso também funciona com `var`'s, mas não com const e let, isso faz com que quando você criar uma var na linha 70 e a chama na linha 20, ou até mesmo 69, um erro não retornará, e sim a variável com valor undefined, isso porque ela existe, mas ainda não teve seu valor atribuído (linha 70);
