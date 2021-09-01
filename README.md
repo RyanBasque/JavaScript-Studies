@@ -49,6 +49,7 @@ Existem várias formas de testar um arquivo JavaScript, citarei quatro:
 - O JavaScript não aceita hifens na declaração de nomes de variáveis;
 - O JavaScript também não aceita iniciar o nome com número, mas aceita se o número vier em segundo caractere para frente;
 - O JavaScript também não aceita caracteres especiais, salvo \_ e $;
+- É possível criar uma variável sem o uso de nenhuma palavra reservada, mas isso `faz com que o escopo dela seja global` (isso pode ser impedido com o uso do uso strict);
 
 ### Tipos de dados primitivos
 
@@ -325,8 +326,20 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 - Podem ter propriedades internas como arguments e names;
 - Nomes podem ser opcionais, ou seja, as funções podem ser anônimas
 
+### IIFE
+
+- `Não é necessário se você já estiver usando um Bundle (Webpack, Parcel, etc), USModules (browsers evergreen) ou se você programar em NodeJs`
+- As IIFE (funções auto-invocáveis) são funções que tem como objetivo suprir o problema das funções onInit no JS base (se você tem 2 scripts com o mesmo nome de função, ex: function init() {...} init(), o Js não compreende que são duas funções diferentes, ou seja, evita poluição de escopo global), por isso, foi criado as IIFE's;
+- Sintaxe: (function () {console.log('On init!')})();
+- Você pode passar argumentos para essas funções usando (function (n1, n2){...})(0, 4500);
+- Você pode passar como argumento final as variáveis window e document (reservadas do Js) veja melhor e, './funcoes/IIFE-menu.js';
+
 ### Hoisting
 
 - Hoisting é a capacidade do interpretador do JavaScript de içar funções e var's para o começo do código;
 - Isso permite com que você possa criar uma `function` teste () na linha 10 e o chame da linha 1 sem dar problemas;
 - Isso também funciona com `var`'s, mas não com const e let, isso faz com que quando você criar uma var na linha 70 e a chama na linha 20, ou até mesmo 69, um erro não retornará, e sim a variável com valor undefined, isso porque ela existe, mas ainda não teve seu valor atribuído (linha 70);
+
+### Propriedades Arguments
+
+-

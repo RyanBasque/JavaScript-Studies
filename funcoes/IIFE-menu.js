@@ -6,8 +6,9 @@
 
 // Para evitar poluição de escopo global, ou seja, uma variável ou uma função substituindo a outra, foram criadas as funções auto invocáveis (IIFE)
 
-(function () {
-    console.log("Test Two - Menu");
+(function (win, doc) {
+    win.alert('IIFE 2');
+    document.write('Teste de Doc')
 
     let isvalid = true;
     function showValid () {
@@ -15,4 +16,4 @@
     };
 
     showValid();
-})();
+})(window, document);
