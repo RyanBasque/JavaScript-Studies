@@ -340,6 +340,23 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 - Isso permite com que você possa criar uma `function` teste () na linha 10 e o chame da linha 1 sem dar problemas;
 - Isso também funciona com `var`'s, mas não com const e let, isso faz com que quando você criar uma var na linha 70 e a chama na linha 20, ou até mesmo 69, um erro não retornará, e sim a variável com valor undefined, isso porque ela existe, mas ainda não teve seu valor atribuído (linha 70);
 
-### Propriedades Arguments
+### Propriedade Arguments
 
--
+- A propriedade arguments nasceu para suprir a necessidade de ter infinitos argumentos dentro de uma função;
+- Quando você desejar usar o arguments, não é necessário adicionar argumentos nos () de uma função, só precisa chamar o arguments, exemplo: `test(){console.log(arguments)}; test(1, 2, 3, 5, 7, 1, 10, 'oi', [0, 4, 5])` // output: { '0': 1, '1': 2, '2': 3, '3': 5, etc };
+- Veja mais sobre o uso em './funcoes/arguments.js';
+- Arguments tem uma estrutura bem parecida com array, por isso, sua alcunha é 'array like';
+- É possível pegar um item específico com arguments[index], exatamente igual a um Array;
+- Arguments não existem dentro de `arrow functions`, só existem em IIEF's, Function expression ou function declaration;
+
+### Propriedade name
+
+- A propriedade name não é muito utilizada, mas ela retorna o nome da função, sua sintaxe é console.log(nomeDaDuncao.name);
+- Funciona com todos os tipos de função, mas se for uma function declaration e o segundo bloco de função for nomeada, ela retorna o segundo nome, ex: const test = function opa() {...}; console.log(test.name); // 'opa';
+
+### Objetos de primeira classe
+
+- Funções são tratadas como objetos, ou seja objetos de primeira classe. Isso faz com que seja possível passar uma fn (função) como paramêtro para outra (um callback, cd), fazer que uma fn seja retornada por outra, que uma fn seja proriredade de um objeto, ou seja, um método, e também que uma fn tenha suas próprias propriedades;
+- Callbacks são meios de passar uma função como parâmetro de uma função, assim, podem executá-la dentro do corpo da própria (ex: function test(cb){} test(() => conosole.log('opa')););
+- Closures são meios de "guardar um cachê e usá-lo depois", ou seja você pode retornar uma função dentro de outra função, e se, você passar um parãmetro no primeiro corpo, ele fica em 'cachê'para ser usado quando necessário (veja mais em './funcoes/obj-primeira-classe.js');
+- Prorpiedade é outro meio de guardar um cachê, mas como forma de variável. Crie uma função e depois use nomeDaFuncao.nomeDaVarivel = valor (veja mais em './funcoes/obj-primeira-classe.js');
