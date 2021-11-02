@@ -130,6 +130,13 @@ Existem várias formas de testar um arquivo JavaScript, citarei quatro:
 - Diferença entre pré e pós:
 - Quanto a otimização, o pós-incremento faz uso de uma variável temporária para armazenar o valor de i antes do incremento, já o pré-incremento adiciona o valor a variável original, no entanto isto é uma otimização prematura e é estatisticamente insignificante.
 
+### Operador de consciência nula
+
+- É um operador lógico que retorna seu lado direito quando o operador esquerdo é `null`ou `undefined`;
+- Importante relevar que ele não olha para os operadores `Falsy`, apenas se o valor é null ou undefined;
+- ex: const foo = null ?? 'default string'; // default string
+- ex: const baz = 0 ?? 42; // 0
+
 ### Operadores de comparação
 
 - Igualdade de valor: ==;
@@ -360,3 +367,19 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 - Callbacks são meios de passar uma função como parâmetro de uma função, assim, podem executá-la dentro do corpo da própria (ex: function test(cb){} test(() => conosole.log('opa')););
 - Closures são meios de "guardar um cachê e usá-lo depois", ou seja você pode retornar uma função dentro de outra função, e se, você passar um parãmetro no primeiro corpo, ele fica em 'cachê'para ser usado quando necessário (veja mais em './funcoes/obj-primeira-classe.js');
 - Prorpiedade é outro meio de guardar um cachê, mas como forma de variável. Crie uma função e depois use nomeDaFuncao.nomeDaVarivel = valor (veja mais em './funcoes/obj-primeira-classe.js');
+
+## DOM - Parte I
+
+- O que é a DOM? (Document Object Model) é uma API disponível apenas nos browsers que edita o que é ,ostrado na tela;
+- DOM é uma árvore que representa o HTML (mundo do javascript), onde nós podemos mudar a dom que será refletido no HTML e vice versa;
+- O F12, por exemplo, mostra o DOM, e se você mudar o DOM, reflete momentaneamente no HTML;
+
+### DOM - Seletores
+
+- document.getElementById('title1') - pega um único elemento pelo id;
+- document.getElementsByTagName() - pega elementos pela tag;
+- document.getElementByClassName() - pega elementos pela classe;
+- document.querySelector('#paragrafo2') - pega os elementos pelo seletor css, ou seja, #test, .test;
+- document.querySelectorAll() pega todos os elementos pelo seletor css, ou seja, #test, .test;
+- O document.getElementByClassName() retorna uma coleção de elementos, array like, e para que você possa mexer em cada um individualemente, é necessário usar [index].comando();
+- O item acima também reflete no tagname e selectorAll
