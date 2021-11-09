@@ -370,16 +370,53 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 
 ## DOM - Parte I
 
-- O que é a DOM? (Document Object Model) é uma API disponível apenas nos browsers que edita o que é ,ostrado na tela;
+- O que é a DOM? (Document Object Model) é uma API disponível apenas nos browsers que edita o que é mostrado na tela;
 - DOM é uma árvore que representa o HTML (mundo do javascript), onde nós podemos mudar a dom que será refletido no HTML e vice versa;
 - O F12, por exemplo, mostra o DOM, e se você mudar o DOM, reflete momentaneamente no HTML;
+- A dom é representada pela variável document, tanto que se você der um log nela, será possível visualizar o "html" da pagína;
+- Então, se você quiser mudar um h1, por exemplo, você terá que usar document.[...];
+- Você pode usar um id, tag ou classe pra selecionar e mudar um elemento DOM;
+- document.getElementById("opa").textContent = "olaaar" // isso mudará o texto do elemento com id opa;
+
+### Diferença entre querySelector e getElement
+
+- O querySelector aceita tanto classe, quanto id e outros parametros de seleção.. Porém, isso faz com que você tenha que colocar a estrutura, exemplo: document.querySelector("#opa"), ele pega o primeiro elemento com o seletor (o que pega todos é o querySelectorAll);
+- O getElement, aceita apenas a estrutura definida para aquela função, getElementById = id, geteElementByClassName = class;
+- O querySelecot vasculha a DOM inteira para achar o parâmetro, já o getElement vai direto no que você escolheu (ele usa os parâmetros do css, então .class, #id, etc) // querySelector("#opa p");
 
 ### DOM - Seletores
 
 - document.getElementById('title1') - pega um único elemento pelo id;
-- document.getElementsByTagName() - pega elementos pela tag;
-- document.getElementByClassName() - pega elementos pela classe;
+- document.getElementsByTagName() - pega elementos pela tag em forma de array like;
+- document.getElementsByClassName() - pega elementos pela classe em forma de array like, ou seja, retorna todos os objetos com aquela classe, então para mudar, por exemplo, o texto de um elemento com a classe title1, você pode usar document.getElementsByClassName('title1')[0].textContent = 'olaaa';
 - document.querySelector('#paragrafo2') - pega os elementos pelo seletor css, ou seja, #test, .test;
-- document.querySelectorAll() pega todos os elementos pelo seletor css, ou seja, #test, .test;
+- document.querySelectorAll() pega todos os elementos pelo seletor css, ou seja, #test, .test, em forma de array like (nodeList);
 - O document.getElementByClassName() retorna uma coleção de elementos, array like, e para que você possa mexer em cada um individualemente, é necessário usar [index].comando();
-- O item acima também reflete no tagname e selectorAll
+- O item acima também reflete no tagname e selectorAll;
+
+### innerHTML vs innerText vs textContent
+
+- O innerHTMl rendereiza tanto tags, quanto texto // document.querySelector('#paragrafo2').innerHTML = '<h1>Ola</h1>' // Ola;
+- O innerText rendereiza apenas texto // document.querySelector('#paragrafo2').innerText = '<h1>Ola</h1>' // <h1>Ola</h1>;
+
+## Pegar tag filha ou tag pai de um elemento
+
+...
+const htmlElement = document.querySelector('#top-bar');
+const pai = htmlElement.parentElement;
+// const filho = htmlElement.firstElementChild;
+const filho = htmlElement.children[0]; // (isso porque retorna um array like)
+...
+
+## Remover elementos do DOM
+
+...
+const htmlElement = document.querySelector(".top-bar p");
+const htmlFather = htmlElement.parentElement;
+console.log(htmlFather.parentElement);
+htmlFather.parentElement.removeChild(htmlFather);
+...
+
+## Arrays
+
+-
