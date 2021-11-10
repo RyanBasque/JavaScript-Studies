@@ -291,11 +291,6 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 
 - Ver mais em './revisão-de-lógica/valor-vs-referencia.js'
 
-### indexOf e lastIndexOf
-
-- IndexOf(1) retona a primeira posição do elemento dentro do array (retorna -1 se não existir);
-- LastIndexOf(5) retona a última posição do elemento dentro do array (retorna -1 se não existir);
-
 ### Tratamento de erros (bloco try catch finnaly)
 
 - Existem alguns meios de tratar erros e evitar que eles aconteçam, o mais popular é a função throw Error('mensagem';
@@ -419,4 +414,129 @@ htmlFather.parentElement.removeChild(htmlFather);
 
 ## Arrays
 
--
+- Variáveis para guardar mais do que um valor;
+
+## Criação de Arrays
+
+- Literals - const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+- Construtores - const array = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+- Os dois fazem a mesma coisa, portanto use apenas um (use de acordo com o cenário);
+
+### Métodos
+
+- Jeitos de modificar ou validar arrays;
+
+### every
+
+- Faz uma validação para cada item do array e retorna um boolean. Todos os itens são números? não, então retorne false. Todos são string? sim, então retorne true;
+
+### filter
+
+- Recebe uma function e retorna um array com os itens que passaram na validação, ex: const opa = [0, 'ryan', 12, 90].filter(item => typeof item === 'number') // [0, 12, 90];
+
+### foreach
+
+- Sempre retorna undefined, porque não retorna nada;
+- Não altera o array original;
+  ...
+  const opa = [0, 'ryan', 12, 90].foreach(item => typeof item === 'number') // undefined;
+  ...
+
+### map
+
+- Recebe uma function e retorna um array com os itens modificados, ex: [0, 'ryan', 12, 90].map(item => item \* 2) // [0, 'ryan', 24, 180];
+
+### find
+
+- Não funciona no navegador Internet Explorer;
+- Retorna o primeiro valor achado que satisfaça uma condição;
+  ...
+  const test = [0, 123, 54, 'ryan', 'basque'];
+  console.log(test.find(item => item === 'basque')); // 'basque'
+  ...
+- Retorna undefined se não existir;
+
+### includes
+
+- Não funciona no navegador Internet Explorer;
+- Verifica se há um determinado item dentro do array, retorna um boolean;
+  ...
+  let arry = [0, 2343234, 5, 6456, 1346, 97, 5];
+  console.log(arry.includes(2343234)); // true
+  ...
+
+### indexOf e lastIndexOf
+
+- IndexOf(1) retona a primeira posição do elemento dentro do array (retorna -1 se não existir);
+- LastIndexOf(5) retona a última posição do elemento dentro do array (retorna -1 se não existir);
+
+### concat
+
+- Sem muito o que dizer, simplesmente junta dois arrays;
+- Às vezes usam pra clonar arrays;
+  ...
+  const a = [1, 2, 3];
+  const b = [4, 5, 6];
+  const c = a.concat(b); // [1 , 2, 3, 4, 5, 6];
+  ...
+
+### push
+
+- Altera o array original e retorna o novo índice do array;
+- Adiciona um valor no último índice do array;
+  ...
+  const a = [0, 1];
+  a.push(2); // [0, 1, 2];
+  ...
+
+### pop
+
+- Altera o array original e retorna o último elemento removido;
+- Remove um valor no último índice do array;
+  ...
+  const a = [0, 1, 2];
+  a.pop(); // [0, 1];
+  ...
+
+### shift
+
+- Altera o array original e retorna o primeiro elemento removido;
+- Remove um valor no primeiro índice do array;
+  ...
+  const a = [0, 1, 2];
+  a.shift(); // [1, 2];
+  ...
+
+### unshift
+
+- Altera o array original e retorna o novo índice do array;
+- Adiciona um valor no primeiro índice do array;
+  ...
+  const a = [0, 1];
+  a.unshift(2); // [2, 0, 1];
+  ...
+
+### slice
+
+- Faz um recorte do array;
+- Pega o indice de onde iniciar e onde terminar;
+  ...
+  const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const b = a.slice(2, 5); // [2, 3, 4];
+  ...
+
+### splice
+
+- O mais poderoso;
+- Modifica o array original;
+- Remove um recorte do array;
+- Pega o indice de onde iniciar e onde terminar;
+  ...
+  const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const b = a.splice(2, 5); // [0, 1, 5, 6, 7, 8, 9];
+  ...
+- Se receber mais do que 2 parâmetros, ele remove os itens e insere novos;
+  ...
+  const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const b = a.splice(2, 5, 'a', 'b', 'c', 'd', 'e'); // [0, 1, 'a', 'b', 'c', 'd', 'e', 8, 9];
+  ...
