@@ -6,7 +6,7 @@ const formatedNumber = numbers.reduce((acc, atualItem) => {
     }
 
     return acc;
-}, []);
+}, []);ku
 
 console.log(formatedNumber);
 

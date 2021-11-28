@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array.from() e Array.of()</title>
+</head>
+<body>
+  
+  <script>
+    const arrOne = new Array(13); // empty x 13
+    const arrOneCopy = Array.from(arrOne); // faz uma cópia do array só que com 13 itens com undefined
+
+    const a = [1, 2, 3];
+    const b = Array.of(a); // spread operator
+    console.log('b', b)
+
+    const arrOf = Array.of(5);
+    console.log(arrOneCopy); // [5]
+  </script>
+</body>
+</html>

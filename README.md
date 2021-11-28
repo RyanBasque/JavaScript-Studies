@@ -32,6 +32,10 @@ Existem várias formas de testar um arquivo JavaScript, citarei quatro:
 - Colocar o script orfão dentro do body, mas no fim (motivo: performance);
 - Code plugin: Code Runner, deixa disponível um botão de "run" no canto superior direito, executando um arquivo (simulação do node caminho-do-arquivo, mas no arquivo que você está visualizando).
 
+### Polyfills
+
+- Fazer com que métodos que não são reconhedos pelo browser sejam reconhecidos pelo JavaScript (ex: Array.prototype.find);
+
 ### Teorias:
 
 - Alguns códigos só funcionam no browser (na DOM), como por exemplo, o alert(`Olá, mundo! 👋`). Esse código não funciona no terminal node por razões óbvias (o terminal não pode exibir uma alerta). A mensagem de erro é: Uncaught ReferenceError: alert is not defined;
@@ -386,6 +390,10 @@ console.log(arry, \_arry); // ["teste"] ["teste"]
 - document.getElementsByClassName() - pega elementos pela classe em forma de array like, ou seja, retorna todos os objetos com aquela classe, então para mudar, por exemplo, o texto de um elemento com a classe title1, você pode usar document.getElementsByClassName('title1')[0].textContent = 'olaaa';
 - document.querySelector('#paragrafo2') - pega os elementos pelo seletor css, ou seja, #test, .test;
 - document.querySelectorAll() pega todos os elementos pelo seletor css, ou seja, #test, .test, em forma de array like (nodeList);
+- O método .map não existe no tipo nodeList, então você deve usar um forEach, ou seja, document.querySelectorAll('#test').forEach(element => {element.textContent = 'olaaa'});
+
+* Você pode usar um Array.from(nodelist) para transformar o nodeList em um array e posteriormente usar o map;
+
 - O document.getElementByClassName() retorna uma coleção de elementos, array like, e para que você possa mexer em cada um individualemente, é necessário usar [index].comando();
 - O item acima também reflete no tagname e selectorAll;
 
@@ -415,6 +423,9 @@ htmlFather.parentElement.removeChild(htmlFather);
 ## Arrays
 
 - Variáveis para guardar mais do que um valor;
+  ...
+  const test = new Array(6); // um array com 6 posições vazias;
+  ...
 
 ## Criação de Arrays
 
@@ -540,3 +551,47 @@ htmlFather.parentElement.removeChild(htmlFather);
   const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const b = a.splice(2, 5, 'a', 'b', 'c', 'd', 'e'); // [0, 1, 'a', 'b', 'c', 'd', 'e', 8, 9];
   ...
+
+## Array from e array of
+
+- Criado a partir do construtor Array; // Array.from();
+- São funçoes nativas;
+- Sem suporte pra IE (internet explorer); // Use um polyfill;
+
+### Array.from()
+
+- Cria um array copiando outro;
+- Especialmente útil quando se quer transformar um array like em um array;
+  ...
+  const arrOne = new Array(13); // empty x 13
+  const arrOneCopy = Array.from(arrOne); // faz uma cópia do array só que com 13 itens com undefined
+  ...
+
+### Array.of()
+
+- Cria um array com x elementos (undefined);
+- O método Array.of() cria um nova instância de Array com um número variável de argumentos, independentemente do número ou do tipo dos argumentos.
+  ...
+  const arrOne = Array.of(1, 2, 3); // [1, 2, 3]
+  ...
+- A diferença entre o Array.of() e o construtor de Array é no tratamento dos argumentos inteiros: Array.of(7) cria um array com um único elemento, 7, enquanto Array(7) cria um array vazio de propriedade length igual a 7 (Nota: isso quer dizer um array com 7 espaços vazios, e não com valores do tipo undefined).
+
+## Spread Operator
+
+- Pega os itens dentro do array e os retorna de forma solta;
+  ...
+  const arr = [1, 2, 3];
+  const arr2 = [...arr, 4, 5, 6]; // [1, 2, 3, 4, 5, 6]
+  sum(arr); // sum([1, 2, 3]) -> ERROR!
+  sum(...arr); // sum(1, 2, 3) -> 6
+  ...
+
+## Rest Operator (para Arrays)
+
+- Pega o resto do Array e retorna em forma de Array;
+
+...
+const aa = [0, 1, 2, 5, 6, 8, 10];
+const [n1, n2, n3, n4, ...n5] = aa;
+console.log(n1, n2, n3, n4, n5);
+...

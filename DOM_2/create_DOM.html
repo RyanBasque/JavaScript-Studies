@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigate DOM</title>
+</head>
+<body>
+  <h1>Test DOM</h1>
+
+  <div class="container">
+    <p>Teste um</p>
+    <p>Teste dois <a href="#">link</a> </p>
+    <p>Teste três</p>
+    
+    <h2>Lista</h2>
+    <ul>
+      <li>1</li>
+      <li>2
+        <ul>
+          <li>item 1</li>
+          <li>item 2</li>
+        </ul>
+      </li>
+      <li>item <a href="#">link 2</a> </li>
+    </ul>
+  </div>
+
+  <script>
+    const title = document.createElement('h1');
+    const atr = document.createAttribute('id');
+    atr.value = 'titleOne';
+
+    title.setAttributeNode(atr);
+
+    const text = document.createTextNode('Teste DOM');
+
+    title.appendChild(text);
+
+    title.setAttribute('style', 'color: blue');
+
+    // document.querySelector('.container').appendChild(title);
+
+    document.querySelector('.container').append(title); // depois do primeiro filho (obs: não pega no IE)
+    // document.querySelector('.container').prepend(title, 'texto novo'); // antes do primeiro filho (obs: não pega no IE), FUNCIONA PRA NÓ E PRA TEXTO
+
+    const test = document.querySelector('ul > li');
+
+    document.querySelector('.container').insertBefore(title, test); // coloca antes do ul > li
+
+    console.log(title);
+
+    // cloneNode(true)
+  </script>
+</body>
+</html>

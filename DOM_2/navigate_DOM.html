@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigate DOM</title>
+</head>
+<body>
+  <h1>Test DOM</h1>
+
+  <div class="container">
+    <p>Teste um</p>
+    <p>Teste dois <a href="#">link</a> </p>
+    <p>Teste três</p>
+    
+    <h2>Lista</h2>
+    <ul>
+      <li>1</li>
+      <li>2
+        <ul>
+          <li>item 1</li>
+          <li>item 2</li>
+        </ul>
+      </li>
+      <li>item <a href="#">link 2</a> </li>
+    </ul>
+  </div>
+
+  <script>
+    console.log(document.body);
+    console.log(document.body.parentElement);
+    console.log(document.body.parentNode);
+
+    console.log(document.body.parentElement === document.body.parentNode);
+
+    const html = document.body.parentElement;
+    console.log(html.parentElement); // null porque não tem um elemento pai, não tem um pai do tipo element, só fragment
+    console.log(html.parentNode); // retorna porque
+
+    const h2 = document.querySelector('h2');
+    console.log(h2.nextSibling); // nesse caso, retorna a quebra de linh, ou seja, a primeira coisa após a tag
+    console.log(h2.nextElementSibling); // retorna o próximo elemento, ou seja, a ul
+
+    h2.previousElementSibling.style.background = 'red';
+
+    /*
+      childNodes
+      children
+      fristChild
+      firstElementChild
+      lastChild
+      lastElementChild
+      hasChildNodes() // retorna um boolean se há ou não algum conteúdo dentro
+    */
+
+    console.log('-------------------------------------------');
+
+    const link = document.querySelector('a'); 
+    const list = document.querySelector('ul ul');
+
+    console.log(list.children); // retorna todos os filhos (apenas elementos, sem text nodes)
+    console.log(list.childNodes); // retorna todos os filhos, inclusive os text nodes e etc
+    
+    console.log(link.parentElement); // retorna o pai do link
+    console.log(link.parentElement.childNodes); // retorna as tags e os textos da tag <p>
+    console.log(link.parentElement.firstChild); // retorna o primeiro filho da tag <p, caso, o text "Teste dois"
+    console.log(link.parentElement.firstElementChild); // retorna o primeiro elemento, no caso, a tag <a>
+
+    console.log(list.lastElementChild.hasChildNodes()); // retorna true, pois a tag <li> tem filhos
+    console.log(list.lastElementChild.childNodes[0].nodeType);
+  </script>
+</body>
+</html>
